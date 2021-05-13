@@ -1,6 +1,5 @@
 package com.superman.assessment.norris.chuck.Controller;
 
-import com.superman.assessment.norris.chuck.Services.ChuckNorrisQuotes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
