@@ -1,5 +1,6 @@
 package com.superman.assessment.norris.chuck.Controller;
 
+import com.superman.assessment.norris.chuck.Services.JokesOfChuckNorris;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,12 +8,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class Jokes {
-    //private ChuckNorrisQuotes chuckNorrisQuotes;
-    private String joke;
+    private JokesOfChuckNorris jokesOfChuckNorris;
 
-    @RequestMapping(value = "/index")
-    public String getRandomQuote(@RequestParam(name="joke", required=false, defaultValue="Jokes") String joke, Model model){
-        model.addAttribute( "joke", joke );
+    public Jokes(JokesOfChuckNorris jokesOfChuckNorris){
+        this.jokesOfChuckNorris = jokesOfChuckNorris;
+    }
+
+    @RequestMapping({"/", ""})
+    public String getRandomQuote(Model model){
+        model.addAttribute( "joke", jokesOfChuckNorris.getJokes());
         return "index";
     }
 }
